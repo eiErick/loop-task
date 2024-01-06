@@ -8,12 +8,25 @@
     <title>Loop</title>
 </head>
 <body>
-    <div class="header">
-        
-    </div>
-    <div class="main">
-
-    </div>
+    <header class="header">
+        <input type="text" placeholder="Adicione um título...">
+        <select placeholder="Escolha quando se repete">
+            <option value="option0" disabled selected>Escolha quando vai repetir...</option>
+            <option value="option1">Todos os dias</option>
+            <option value="option2">Todos os dias da semana (segunda a sexta)</option>
+            <option value="option3">Semanal</option>
+            <option value="option4">Mensal</option>
+            <option value="option5">Anual</option>
+        </select>
+        <button>+</button>
+    </header>
+    <main class="main">
+        <div class="task">
+            <input type="checkbox">
+            <p>Ler livro</p>
+            <img src="img/trash.svg" alt="trash">
+        </div>
+    </main>
     <script src="scripts/main.js"></script>
 </body>
 </html>
