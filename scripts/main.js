@@ -46,7 +46,7 @@ function printEmptyListText() {
         text.classList.add("text-empty-list");
         text.textContent = "Não a tarefas agora :)";
         main.appendChild(text);
-    } else if (main.childNodes.length >= 2) {
+    } else if (main.childNodes.length >= 2 && document.querySelector(".text-empty-list") !== null) {
         document.querySelector(".text-empty-list").remove();
     }
 }
