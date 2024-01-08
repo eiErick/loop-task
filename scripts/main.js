@@ -34,6 +34,12 @@ document.addEventListener("click", (element) => {
 
 function createTask() {
     const nameTask = inputName.value;
+
+    if (nameTask === "") {
+        alert("O campo de título não pode estar vazio! Adicione um título!");
+        return;
+    }
+
     const nameTaskCapitalize = capitalizeFirstLetter(nameTask);
     
     const task = {"name": nameTaskCapitalize};
