@@ -19,7 +19,16 @@ btnAddTask.addEventListener("click", () => {
 
 inputName.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-      createTask();
+        createTask();
+    }
+});
+
+document.addEventListener("click", (element) => {
+    const trash = element.target.classList.value;
+    
+    if (trash === "trash") {
+        const taskName = element.target.parentNode.childNodes[1].innerText;
+        deleteTask(taskName);
     }
 });
 
@@ -36,6 +45,20 @@ function createTask() {
     clearInputs();
 }
 
+function deleteTask(name) {
+    const confirm = window.confirm(`Você tem certeza que quer apagar a tarefa "${name}"?`);
+    if (!confirm) return;
+
+    for (let i = 0; i < listTask.length; i++) {
+        if (name === listTask[i].name) {
+            listTask.splice(i, 1);
+            main.removeChild(main.childNodes[i]);    
+            localStorage.setItem("tasks", JSON.stringify(listTask));
+            return;
+        }
+    }
+}
+
 function printTaks(name) {
     const task = document.createElement("div");
     const inputCheckbox = document.createElement("input");
@@ -45,6 +68,7 @@ function printTaks(name) {
     task.classList = "task";
     inputCheckbox.setAttribute("type", "checkbox");
     taskName.innerText = name;
+    imgTrash.classList.add("trash");
     imgTrash.setAttribute("src", "img/trash.svg");
     imgTrash.setAttribute("alt", "trash");
 
