@@ -13,6 +13,8 @@ if (savedTask) {
     });
 }
 
+// Event Listeners
+
 btnAddTask.addEventListener("click", () => {
     createTask();
 });
@@ -31,6 +33,23 @@ document.addEventListener("click", (element) => {
         deleteTask(taskName);
     }
 });
+
+// Call Functions
+
+printEmptyListText();
+
+// Functions
+
+function printEmptyListText() {
+    if (main.childNodes.length === 0) {
+        const text = document.createElement("p");
+        text.classList.add("text-empty-list");
+        text.textContent = "Não a tarefas agora :)";
+        main.appendChild(text);
+    } else if (main.childNodes.length >= 2) {
+        document.querySelector(".text-empty-list").remove();
+    }
+}
 
 function createTask() {
     const nameTask = inputName.value;
@@ -83,6 +102,8 @@ function printTaks(name) {
     task.appendChild(imgTrash);
 
     main.appendChild(task);
+
+    printEmptyListText();
 }
 
 function clearInputs() {

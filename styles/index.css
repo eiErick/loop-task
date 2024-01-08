@@ -77,6 +77,12 @@ body {
     align-items: center;
 }
 
+.main .text-empty-list {
+    font-size: 1.5em;
+    color: rgb(150, 150, 150);
+    margin-top: 3rem;
+}
+
 .main div {
     position: relative;
     width: 48rem;
