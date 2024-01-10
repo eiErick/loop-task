@@ -110,6 +110,20 @@ function clearInputs() {
     inputName.value = "";
 }
 
+function clearAll() {
+    const confirm = window.confirm(`ATENÇÃO! Você tem certeza que deseja apagar TODAS as tarefas?`);
+    if (!confirm) return;
+
+    listTask = [];
+
+    while (main.firstChild) {
+        main.removeChild(main.firstChild);
+    }
+
+    clearInputs();
+    localStorage.setItem("tasks", JSON.stringify(listTask));
+}
+
 function capitalizeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
