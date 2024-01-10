@@ -2,7 +2,7 @@ const inputName = document.querySelector(".input-task-name");
 const main = document.querySelector(".main");
 const btnAddTask = document.querySelector(".btn-add-task");
 
-const savedTask = localStorage.getItem("tasks");
+const savedTask = localStorage.getItem("LoopTasks");
 
 let listTask = [];
 
@@ -66,7 +66,7 @@ function createTask() {
     const task = {"name": nameTaskCapitalize};
     listTask.push(task);
 
-    localStorage.setItem("tasks", JSON.stringify(listTask));
+    localStorage.setItem("LoopTasks", JSON.stringify(listTask));
 
     printTaks(nameTaskCapitalize);
     clearInputs();
@@ -80,7 +80,7 @@ function deleteTask(name) {
         if (name === listTask[i].name) {
             listTask.splice(i, 1);
             main.removeChild(main.childNodes[i]);    
-            localStorage.setItem("tasks", JSON.stringify(listTask));
+            localStorage.setItem("LoopTasks", JSON.stringify(listTask));
             return;
         }
     }
@@ -123,7 +123,8 @@ function clearAll() {
     }
 
     clearInputs();
-    localStorage.setItem("tasks", JSON.stringify(listTask));
+    localStorage.setItem("LoopTasks", JSON.stringify(listTask));
+}
 
 function checkUniqueTasks(name) {
     for (let i = 0; i < listTask.length; i++) {
