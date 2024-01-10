@@ -60,6 +60,8 @@ function createTask() {
     }
 
     const nameTaskCapitalize = capitalizeFirstLetter(nameTask);
+    const check = checkUniqueTasks(nameTaskCapitalize);
+    if (check) return;
     
     const task = {"name": nameTaskCapitalize};
     listTask.push(task);
@@ -122,6 +124,16 @@ function clearAll() {
 
     clearInputs();
     localStorage.setItem("tasks", JSON.stringify(listTask));
+
+function checkUniqueTasks(name) {
+    for (let i = 0; i < listTask.length; i++) {
+        if (listTask[i].name === name) {
+            alert("Já existe uma tarefa com este título! tente outro título.");
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function capitalizeFirstLetter(word) {
