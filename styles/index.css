@@ -107,6 +107,11 @@ body {
     margin-left: 1.5rem;
 }
 
+.main div .repeatText {
+    right: 3rem;
+    color: lightgreen;
+}
+
 .main div img {
     position: absolute;
     right: 1rem;

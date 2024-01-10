@@ -9,14 +9,14 @@
 </head>
 <body>
     <header class="header">
-        <input class="input-task-name" type="text" placeholder="Adicione um título...">
-        <select placeholder="Escolha quando se repete">
-            <option value="option0" disabled selected>Escolha quando vai repetir...</option>
-            <option value="option1">Todos os dias</option>
-            <option value="option2">Todos os dias da semana (segunda a sexta)</option>
-            <option value="option3">Semanal</option>
-            <option value="option4">Mensal</option>
-            <option value="option5">Anual</option>
+        <input autofocus class="input-task-name" type="text" maxlength="30" placeholder="Adicione um título...">
+        <select class="repeat-selection" placeholder="Escolha quando se repete">
+            <option selected value="nerver">Nunca</option>
+            <option value="everyDay">Todos os dias</option>
+            <option value="everyWorkingDay">Todos os dias da semana (segunda a sexta)</option>
+            <option value="weekly">Semanal</option>
+            <option value="monthly">Mensal</option>
+            <option value="yearly">Anual</option>
         </select>
         <button class="btn-add-task">+</button>
     </header>

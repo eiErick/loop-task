@@ -1,6 +1,7 @@
 const inputName = document.querySelector(".input-task-name");
-const main = document.querySelector(".main");
 const btnAddTask = document.querySelector(".btn-add-task");
+const main = document.querySelector(".main");
+const repeatSelection = document.querySelector(".repeat-selection");
 
 const savedTask = localStorage.getItem("LoopTasks");
 
@@ -9,7 +10,7 @@ let listTask = [];
 if (savedTask) {
     listTask = JSON.parse(savedTask);
     listTask.forEach(task => {
-        printTaks(task.name);
+        printTaks(task.name, task.repeat);
     });
 }
 
@@ -59,16 +60,22 @@ function createTask() {
         return;
     }
 
+    if (repeatSelection.value === "") {
+        alert(`O campo de seleção de repetição não pode estar vazio! Escolha quando a terefa "${nameTask}", deve se repitir.`);
+        return;
+    }
+
     const nameTaskCapitalize = capitalizeFirstLetter(nameTask);
+
     const check = checkUniqueTasks(nameTaskCapitalize);
     if (check) return;
     
-    const task = {"name": nameTaskCapitalize};
+    const task = {"name": nameTaskCapitalize, "repeat": repeatSelection.value};
     listTask.push(task);
 
     localStorage.setItem("LoopTasks", JSON.stringify(listTask));
 
-    printTaks(nameTaskCapitalize);
+    printTaks(nameTaskCapitalize, repeatSelection.value);
     clearInputs();
 }
 
@@ -86,21 +93,25 @@ function deleteTask(name) {
     }
 }
 
-function printTaks(name) {
+function printTaks(name, repeat) {
     const task = document.createElement("div");
     const inputCheckbox = document.createElement("input");
     const taskName = document.createElement("p");
+    const repeatText = document.createElement("p");
     const imgTrash = document.createElement("img");
 
     task.classList = "task";
     inputCheckbox.setAttribute("type", "checkbox");
     taskName.innerText = name;
+    repeatText.innerText = repeat;
+    repeatText.classList.add("repeatText");
     imgTrash.classList.add("trash");
     imgTrash.setAttribute("src", "img/trash.svg");
     imgTrash.setAttribute("alt", "trash");
 
     task.appendChild(inputCheckbox);
     task.appendChild(taskName);
+    task.appendChild(repeatText);
     task.appendChild(imgTrash);
 
     main.appendChild(task);
